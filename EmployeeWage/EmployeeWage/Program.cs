@@ -1,52 +1,57 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Welcome to Employee wage");
-
-Random random = new Random();//use to generate random number
-
-const int present = 1,
-          abcent = 0,
-          halfday = 2,
-          partTime = 4,
-          perHrWage = 20,
-          fulltime = 8
-         ;
-
-
-int isPresent = random.Next(3),//0 = abcent,1 = fulltime/present, 2 =parttime
-     empWage =0;
-
-switch (isPresent)
+namespace EmployeeWage1
 {
-    case present:
-        Console.WriteLine("Employee is present");
-        empWage = perHrWage * fulltime;
-        break;
-    case halfday:
-        Console.WriteLine("Employee is present half day");
-        empWage = perHrWage * partTime;
-        break;
-    default:
-        Console.WriteLine("employee is abcent");
-        break;
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            const int PRESENT = 0;
+            const int PARTIAL_PRESENT = 1;
+            const int WAGE_PER_HOUR = 20;
+            const int FULL_TIME_WORKING_HOUR = 8;
+            int PART_TIME_WORKING_HOUR = 4;
+            int wage = 0;
+            Random random = new Random();
+            int empCheck = random.Next(0, 3);
+            if (empCheck == 0)
+            {
+                Console.WriteLine("Employee is present");
+                wage = FULL_TIME_WORKING_HOUR * WAGE_PER_HOUR;
+                Console.WriteLine($"WAGE:{wage}");
+            }
+            else if (empCheck == PARTIAL_PRESENT)
+            {
+                Console.WriteLine("Employee is present");
+                wage = FULL_TIME_WORKING_HOUR * WAGE_PER_HOUR;
+                Console.WriteLine($"WAGE:{wage}");
+            }
+            else
+            {
+                Console.WriteLine("Employee is absent");
+
+            }
+            switch (empCheck)
+            {
+                case PRESENT:
+                    Console.WriteLine("Employee is present");
+                    wage = FULL_TIME_WORKING_HOUR * WAGE_PER_HOUR;
+                    Console.WriteLine($"WAGE:{wage}");
+                    break;
+
+                case PARTIAL_PRESENT:
+                    Console.WriteLine("Employee is present");
+                    wage = PART_TIME_WORKING_HOUR * WAGE_PER_HOUR;
+                    Console.WriteLine($"WAGE:{wage}");
+                    break;
+
+                default:
+                    Console.WriteLine("Employee is absent");
+                    Console.WriteLine($"WAGE:{wage}");
+                    break;
+            }
+
+
+
+        }
+    }
 }
-
-
-/*if else code
-Console.WriteLine("is present:" + isPresent); //if else code
-
-if(isPresent == present)
-{
-Console.WriteLine("Employee is present");
-        empWage = perHrWage * fulltime;
-}
-else if (isPresent == halfday)
-{
-    Console.WriteLine("Employee is present half");
-    empWage = perHrWage * partTime;
-}
-else
-{
-
-    Console.WriteLine("Employee is Abcent");
-}*/
-Console.WriteLine("employee wage: " + empWage);
